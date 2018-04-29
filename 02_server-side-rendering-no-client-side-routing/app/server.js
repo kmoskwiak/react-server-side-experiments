@@ -9,14 +9,7 @@ import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router';
 import Reducer from './reducers';
 import Helmet from 'react-helmet';
-
-import About from './components/About';
-import Home from './components/Home';
-
-const modules = {
-    'Home': Home,
-    'About': About
-};
+import components from './components';
 
 const app = express();
 
@@ -40,7 +33,7 @@ app.use('/', (req, res) => {
 
 
 function render(currentModule, state, res) {
-    const Module = modules[currentModule];
+    const Module = components[currentModule];
     const store = createStore(Reducer, state);
     const context = {};
 

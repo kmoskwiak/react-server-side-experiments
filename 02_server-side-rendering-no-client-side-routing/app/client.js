@@ -5,9 +5,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import Reducer from './reducers';
-
-import About from './components/About';
-import Home from './components/Home';
+import componets from './components';
 
 const preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;
@@ -15,12 +13,7 @@ const store = createStore(Reducer, preloadedState);
 
 const currentModule = window.__CURRENT_MODULE__;
 
-const modules = {
-    'Home': Home,
-    'About': About
-};
-
-const Module = modules[currentModule];
+const Module = componets[currentModule];
 
 hydrate(
     <Provider store={store}>
